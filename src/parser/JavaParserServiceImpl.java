@@ -114,7 +114,8 @@ public class JavaParserServiceImpl {
 
   void start()
   {
-    parse(new JavaParserArg());
+    JavaParsingResult result = parse(new JavaParserArg());
+    System.out.println(result);
   }
 
   void run()
@@ -122,7 +123,7 @@ public class JavaParserServiceImpl {
     if(!isStarted)
       start();
 
-    server.serve();
+    //server.serve();
   }
 
   public JavaParsingResult parse(JavaParserArg arg)
