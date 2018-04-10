@@ -170,6 +170,7 @@ public class Parser
 		}
 		catch(Exception ex)
 		{
+			ex.printStackTrace();
 			return null;
 		}
 	}
@@ -259,6 +260,7 @@ public class Parser
 		}
 		catch(Exception ex)
 		{
+			ex.printStackTrace();
 			System.out.println("Bad arguments.");
 			return JavaParsingResult.Fail;
 		}
@@ -278,7 +280,7 @@ public class Parser
 
 		if(!ap.isGood())
 		{
-			System.out.println("Bad arguments.");
+			System.out.println("Bad arguments. (ArgParser not good)");
 			return JavaParsingResult.Fail;
 		}
 
@@ -353,6 +355,9 @@ public class Parser
 		parser.setBindingsRecovery(true);
 		parser.setUnitName(filename);
 		parser.setKind(ASTParser.K_COMPILATION_UNIT);
+		System.out.println(Arrays.toString(classpath));
+		System.out.println(Arrays.toString(sourcepath));
+		System.out.println(Arrays.toString(encodings));
 		parser.setEnvironment(classpath, sourcepath, encodings, false);
 
 		try

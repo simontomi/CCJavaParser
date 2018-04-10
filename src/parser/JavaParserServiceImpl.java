@@ -114,7 +114,12 @@ public class JavaParserServiceImpl {
 
   void start()
   {
-    JavaParsingResult result = parse(new JavaParserArg());
+    JavaParserArg arg = new JavaParserArg();
+    arg.database = "pgsql:host=localhost;database=xerces;port=5432;user=simon;password=almafa37";
+    arg.sourcepath = "/home/simon/JavaParserSampleProject";
+    arg.rtJar = "/home/simon/IdeaProjects/Javaparser/libs";
+    arg.opts.add("/home/simon/JavaParserSampleProject/HelloWorld.java");
+    JavaParsingResult result = parse(arg);
     System.out.println(result);
   }
 

@@ -3,6 +3,7 @@
 
 package parser;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.ArrayList;
 import java.io.File;
@@ -27,6 +28,7 @@ public class ArgParser
 	
 	public ArgParser(String[] args)
 	{
+		System.out.println("[ArgParser] Args: " + Arrays.toString(args));
 		if(args==null) { return; }
 
 		List<SkipArg> skipArgs = new ArrayList<SkipArg>();
@@ -65,7 +67,7 @@ public class ArgParser
 				if("--wd".equals(args[i]) || "-sourcepath".equals(args[i]))
 				{
 					if((i+1)>=args.length) { notEnoughArg(args[i]); return; }
-					
+
 					for(String s : args[i+1].split(":"))
 					{
 					  File path = new File(s);
@@ -154,7 +156,6 @@ public class ArgParser
 					error("New source: \"" + args[i] + "\"");
 					return;
 				}
-
 				filename = args[i];
 			}
 		}
@@ -203,7 +204,6 @@ public class ArgParser
 				error("Working directory must be full path.");
 				return;
 			}
-
 			filename = workingDir + "/" + filename;
 		}
 
