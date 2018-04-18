@@ -68,7 +68,7 @@ public class AstVisitor extends org.eclipse.jdt.core.dom.ASTVisitor
 	private Frame frame = Frame.createFrame();
 	private String currentPrefix = "*";
 	private int classDeclDepth = 0;
-	private Map<String, JavaFunction> functions = new HashMap<String, JavaFunction>(); // The functions meet by the visitor. Map mangled name to function. 
+	private Map<String, JavaFunction> functions = new HashMap<String, JavaFunction>(); // The functions meet by the visitor. Map mangled name to function.
 	private Map<String, JavaType> types = new HashMap<String, JavaType>(); // The types meet by the visitor. Map qualified name to type.
 	private List<ClassInstanceCreation> anonymusClassInstantiations = new LinkedList<ClassInstanceCreation>();
 	private int anonymusCounter = 1;
@@ -94,7 +94,7 @@ public class AstVisitor extends org.eclipse.jdt.core.dom.ASTVisitor
 		{
 			classfilename = filename.substring(0, filename.lastIndexOf('.')) + ".class";
 		}
-		
+
 		File fparent = getDirectory(path, timestamp);
 
 		if((file=getFileByName(path + "/" + filename))==null)
@@ -172,7 +172,7 @@ public class AstVisitor extends org.eclipse.jdt.core.dom.ASTVisitor
 			for(IProblem problem : problems)
 			{
 				BuildLog log = new BuildLog();
-				
+
 				PositionInfo pi = new PositionInfo(cu, problem);
 
 				log.setLoc_start_line(pi.getStartLine());
@@ -433,7 +433,7 @@ public class AstVisitor extends org.eclipse.jdt.core.dom.ASTVisitor
 
 	private static long permaAstId(String val, String mangledName)
 	{
-		String id = val + ":not_in_file:" + mangledName;    
+		String id = val + ":not_in_file:" + mangledName;
 		return Utils.fnvHash(id);
 	}
 
@@ -595,7 +595,7 @@ public class AstVisitor extends org.eclipse.jdt.core.dom.ASTVisitor
 
 		return n;
 	}
-	
+
 	private JavaFunction createFunction(MethodDeclaration node, JavaType retType, String name, String mangledName, int mods)
 	{
 		int node_offs = calcNodeOffset(node, node.getJavadoc(), node.modifiers());
@@ -1365,7 +1365,7 @@ public class AstVisitor extends org.eclipse.jdt.core.dom.ASTVisitor
 				JavaAstNode an2 = createAstNode(node, "typeloc " + id, JavaAstNode.AstType.TypeLocation, JavaAstNode.SymbolType.Type, mangledName);
 				an2.setMangledName(mangledName);
 				an2.setMangledNameHash(Utils.getNameHash(mangledName));
-	
+
 				trace("Type location (svd) of '" + id + "' at line " + cu.getLineNumber(node.getStartPosition()));
 			}
 
@@ -1454,7 +1454,7 @@ public class AstVisitor extends org.eclipse.jdt.core.dom.ASTVisitor
 			if(vbind.getDeclaringClass()==null && ".length)I".equals(vbind.getKey()))
 			{
 				// workaround: there is a bug in the expression "<some_array>.length"
-				return true;		
+				return true;
 			}
 
 			ITypeBinding tbind = qualName.resolveTypeBinding();
@@ -1608,7 +1608,7 @@ public class AstVisitor extends org.eclipse.jdt.core.dom.ASTVisitor
 					JavaAstNode an = createAstNode(node, "usage " + id, getUsageMode(node, typeName), JavaAstNode.SymbolType.Variable, var.getMangledName());
 					an.setMangledName(var.getMangledName());
 					an.setMangledNameHash(var.getMangledNameHash());
-	
+
 					trace("Usage of '" + typeName + "' at line " + cu.getLineNumber(node.getStartPosition()));
 				}
 				else
@@ -1629,7 +1629,7 @@ public class AstVisitor extends org.eclipse.jdt.core.dom.ASTVisitor
 					JavaAstNode an = createAstNode(node, "typeloc " + nameWithArgs, JavaAstNode.AstType.TypeLocation, JavaAstNode.SymbolType.Type, mangledName);
 					an.setMangledName(mangledName);
 					an.setMangledNameHash(Utils.getNameHash(mangledName));
-	
+
 					trace("Type location (sn) of '" + mangledName + "' at line " + cu.getLineNumber(node.getStartPosition()));
 				}
 				else
