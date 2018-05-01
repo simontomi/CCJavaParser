@@ -102,47 +102,43 @@ import parser.mod.JavaParsingResult;
 
 public class JavaParserServiceImpl {
 
-  private TServer server = null;
-  static private int initPort = 0;
-  public Boolean isStarted = false;
+    private TServer server = null;
+    static private int initPort = 0;
+    public Boolean isStarted = false;
 
-  public static void main(String[] args)
-  {
-    JavaParserServiceImpl jpsi = new JavaParserServiceImpl();
-    jpsi.run();
-  }
+    public static void main(String[] args) {
+        JavaParserServiceImpl jpsi = new JavaParserServiceImpl();
+        jpsi.run();
+    }
 
-  void start()
-  {
-    JavaParserArg arg = new JavaParserArg();
-    arg.database = "pgsql:host=localhost;database=javaparser;port=5432;user=simon;password=almafa37";
-    arg.sourcepath = "/home/simon/JavaParserSampleProject";
-    arg.rtJar = "/home/simon/IdeaProjects/Javaparser/libs";
-    //arg.buildId = "0";
-    arg.opts.add("/home/simon/JavaParserSampleProject/HelloWorld.java");
-    JavaParsingResult result = parse(arg);
-    System.out.println(result);
-  }
+    void start() {
+        JavaParserArg arg = new JavaParserArg();
+        //arg.database = "pgsql:host=localhost;database=javaparser;port=5432;user=simon;password=almafa37";
+        arg.database = "pgsql:host=localhost;database=postgres;port=6250;user=simon;password=almafa37";
+        arg.sourcepath = "/home/simon/JavaParserSampleProject";
+        arg.rtJar = "/home/simon/IdeaProjects/Javaparser/libs";
+        arg.buildId = "0";
+        arg.opts.add("/home/simon/JavaParserSampleProject/HelloWorld.java");
+        JavaParsingResult result = parse(arg);
+        System.out.println(result);
+    }
 
-  void run()
-  {
-    if(!isStarted)
-      start();
+    void run() {
+        if (!isStarted)
+            start();
 
-    //server.serve();
-  }
+        //server.serve();
+    }
 
-  public JavaParsingResult parse(JavaParserArg arg)
-  {
-    return Parser.parse(arg);
-  }
+    public JavaParsingResult parse(JavaParserArg arg) {
+        return Parser.parse(arg);
+    }
 
-  public void stop()
-  {
-    // server.stop();
-    isStarted = false;
+    public void stop() {
+        // server.stop();
+        isStarted = false;
 
-    System.exit(0);
-  }
+        System.exit(0);
+    }
 }
 

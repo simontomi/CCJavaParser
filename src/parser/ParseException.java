@@ -3,15 +3,16 @@
 
 package parser;
 
-public class ParseException extends Exception
-{
-	private static final long serialVersionUID = -2059831230073491075L;
+public class ParseException extends Exception {
+    private static final long serialVersionUID = -2059831230073491075L;
 
-	public ParseException(String msg)
-	{
-		message = msg;
-	}
+    public ParseException(String msg) {
+        message = msg;
+    }
 
-	private String message;
-	public String getMessage() { return message; }
+    private String message;
+
+    public String getMessage() {
+        return message;
+    }
 }

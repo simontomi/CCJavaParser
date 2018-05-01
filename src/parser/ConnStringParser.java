@@ -10,243 +10,227 @@ import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class ConnStringParser
-{
-	private static final Logger log = Logger.getLogger(Parser.class.getName());
+public class ConnStringParser {
+    private static final Logger log = Logger.getLogger(Parser.class.getName());
 
-	private String prefix;
-	public String getPrefix() { return prefix; }
+    private String prefix;
 
-	private String driver;
-	public String getDriver() { return driver; }
+    public String getPrefix() {
+        return prefix;
+    }
 
-	private String database;
-	public String getDatabase() { return database; }
+    private String driver;
 
-	public String getUrl()
-	{
-		String url = prefix + ":";
+    public String getDriver() {
+        return driver;
+    }
 
-		if(!host.isEmpty())
-		{
-			url += "//" + host;
+    private String database;
 
-			if(port>0)
-			{
-				url += ":" + port;
-			}
+    public String getDatabase() {
+        return database;
+    }
 
-			url += "/";
-		}
+    public String getUrl() {
+        String url = prefix + ":";
 
-		return url + database;
-	}
+        if (!host.isEmpty()) {
+            url += "//" + host;
 
-	private String user;
-	public String getUser() { return user; }
+            if (port > 0) {
+                url += ":" + port;
+            }
 
-	private String initialUser;
+            url += "/";
+        }
 
-	private String password;
-	public String getPassword() { return password; }
+        return url + database;
+    }
 
-	private String passwdfile;
+    private String user;
 
-	private int port;
-	private String host;
+    public String getUser() {
+        return user;
+    }
 
-	private Map<String, String> prefixAliasMap = new HashMap<String, String>();
-	public void addAlias(String prefix, String alias)
-	{
-		prefixAliasMap.put(prefix, alias);
-	}
+    private String initialUser;
 
-	private Map<String, String> prefixDriverMap = new HashMap<String, String>();
-	public void addPrefix(String prefix, String driver)
-	{
-		prefixDriverMap.put(prefix, driver);
-	}
+    private String password;
 
-	public ConnStringParser(String user)
-	{
-		initialUser = user;
-		reset();
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void reset()
-	{
-		driver = "";
-		database = "";
-		user = initialUser;
-		password = "";
-		passwdfile = "";
-		port = -1;
-		host = "";
-	}
+    private String passwdfile;
 
-	private void printError(String msg)
-	{
-		log.log(Level.SEVERE, "ERROR: invalid connection string (" + msg + ")");
-	}
+    private int port;
+    private String host;
 
-	public boolean parse(String connstring)
-	{
-		// cut the prefix
+    private Map<String, String> prefixAliasMap = new HashMap<String, String>();
 
-		int colonPos = connstring.indexOf(':');
-		if(colonPos<0)
-		{
-			// prefix is missing
-			printError("prefix is missing");
-			return false;
-		}
+    public void addAlias(String prefix, String alias) {
+        prefixAliasMap.put(prefix, alias);
+    }
 
-		prefix = connstring.substring(0, colonPos);
-		String alias = prefixAliasMap.get(prefix);
-		if(null!=alias)
-		{
-			prefix = alias;
-		}
+    private Map<String, String> prefixDriverMap = new HashMap<String, String>();
 
-		driver = prefixDriverMap.get(prefix);
-		if(null==driver)
-		{
-			printError("unknown prefix: \"" + prefix + "\"");
-			return false;
-		}
+    public void addPrefix(String prefix, String driver) {
+        prefixDriverMap.put(prefix, driver);
+    }
 
-		for(String keyvalue : connstring.substring(colonPos+1).split(";"))
-		{
-			// get key and value
+    public ConnStringParser(String user) {
+        initialUser = user;
+        reset();
+    }
 
-			int eqPos = keyvalue.indexOf('=');
+    public void reset() {
+        driver = "";
+        database = "";
+        user = initialUser;
+        password = "";
+        passwdfile = "";
+        port = -1;
+        host = "";
+    }
 
-			if(eqPos<0)
-			{
-				// bad format
-				printError("missing \"=\" sign");
-				return false;
-			}
+    private void printError(String msg) {
+        log.log(Level.SEVERE, "ERROR: invalid connection string (" + msg + ")");
+    }
 
-			String key   = keyvalue.substring(0, eqPos);
-			String value = keyvalue.substring(eqPos+1);
+    public boolean parse(String connstring) {
+        // cut the prefix
 
-			// process key 
+        int colonPos = connstring.indexOf(':');
+        if (colonPos < 0) {
+            // prefix is missing
+            printError("prefix is missing");
+            return false;
+        }
 
-			if(!processKeyValue(key, value))
-			{
-				// something went wrong :(
-				return false;
-			}
-		}
+        prefix = connstring.substring(0, colonPos);
+        String alias = prefixAliasMap.get(prefix);
+        if (null != alias) {
+            prefix = alias;
+        }
 
-		// if no passwdfile fall-back to PGPASSFILE env var
-		if(null==passwdfile || passwdfile.isEmpty())
-		{
-			String file = System.getenv().get("PGPASSFILE");
-			if(null!=file)
-			{
-				passwdfile = file;
-			}
-		}
+        driver = prefixDriverMap.get(prefix);
+        if (null == driver) {
+            printError("unknown prefix: \"" + prefix + "\"");
+            return false;
+        }
 
-		// process passwdfile
-		if(null!=passwdfile && !passwdfile.isEmpty())
-		{
-			return readPasswdfile();
-		}
+        for (String keyvalue : connstring.substring(colonPos + 1).split(";")) {
+            // get key and value
 
-		return true;
-	}
+            int eqPos = keyvalue.indexOf('=');
 
-	private boolean readPasswdfile()
-	{
-		if(null==user || user.isEmpty())
-		{
-			printError("missing user name");
-			return false;
-		}
+            if (eqPos < 0) {
+                // bad format
+                printError("missing \"=\" sign");
+                return false;
+            }
 
-		try
-		{
-			BufferedReader reader = Files.newBufferedReader(FileSystems.getDefault().getPath(passwdfile), Charset.defaultCharset());
-			String line = null;
+            String key = keyvalue.substring(0, eqPos);
+            String value = keyvalue.substring(eqPos + 1);
 
-			while(null!=(line=reader.readLine()))
-			{
-				if(!line.isEmpty() && '#'!=line.charAt(0))
-				{
-					// TODO: the line could contain escaped colons
-					// for now: find the last colon
-	
-					String parts[] = line.split(":");
-	
-					if(5!=parts.length)
-					{
-						printError("invalid file passwdfile format");
-						return false;
-					}
+            // process key
 
-					if(user.matches(parts[3]))
-					{
-						password = parts[4];
-						return true;
-					}
-				}
-			}
-		}
-		catch(IOException ex)
-		{
-			printError("passwdfile \"" + passwdfile + "\" is not found");
-			return false;
-		}
+            if (!processKeyValue(key, value)) {
+                // something went wrong :(
+                return false;
+            }
+        }
 
-		printError("user \"" + user + "\" is not found in passwdfile");
-		return false;
-	}
+        // if no passwdfile fall-back to PGPASSFILE env var
+        if (null == passwdfile || passwdfile.isEmpty()) {
+            String file = System.getenv().get("PGPASSFILE");
+            if (null != file) {
+                passwdfile = file;
+            }
+        }
 
-	private boolean processKeyValue(String key, String value)
-	{
-		switch(key)
-		{
-		case "database":
-			database = value;
-			return true;
+        // process passwdfile
+        if (null != passwdfile && !passwdfile.isEmpty()) {
+            return readPasswdfile();
+        }
 
-		case "user":
-			user = value;
-			return true;
+        return true;
+    }
 
-		case "passwdfile":
-			passwdfile = value;
-			return true;
+    private boolean readPasswdfile() {
+        if (null == user || user.isEmpty()) {
+            printError("missing user name");
+            return false;
+        }
 
-		case "password":
-			password = value;
-			return true;
+        try {
+            BufferedReader reader = Files.newBufferedReader(FileSystems.getDefault().getPath(passwdfile), Charset.defaultCharset());
+            String line = null;
 
-		case "host":
-			host = value;
-			return true;
+            while (null != (line = reader.readLine())) {
+                if (!line.isEmpty() && '#' != line.charAt(0)) {
+                    // TODO: the line could contain escaped colons
+                    // for now: find the last colon
 
-		case "port":
-			try
-			{
-				port = Integer.parseInt(value);
-				return true;
-			}
-			catch(NumberFormatException ex)
-			{
-				printError("Bad port: \"" + value + "\"");
-				return false;
-			}
+                    String parts[] = line.split(":");
 
-		default:
-			printError("unknown key: \"" + key + "\"");
-			return false;
-		}
-	}
+                    if (5 != parts.length) {
+                        printError("invalid file passwdfile format");
+                        return false;
+                    }
+
+                    if (user.matches(parts[3])) {
+                        password = parts[4];
+                        return true;
+                    }
+                }
+            }
+        } catch (IOException ex) {
+            printError("passwdfile \"" + passwdfile + "\" is not found");
+            return false;
+        }
+
+        printError("user \"" + user + "\" is not found in passwdfile");
+        return false;
+    }
+
+    private boolean processKeyValue(String key, String value) {
+        switch (key) {
+            case "database":
+                database = value;
+                return true;
+
+            case "user":
+                user = value;
+                return true;
+
+            case "passwdfile":
+                passwdfile = value;
+                return true;
+
+            case "password":
+                password = value;
+                return true;
+
+            case "host":
+                host = value;
+                return true;
+
+            case "port":
+                try {
+                    port = Integer.parseInt(value);
+                    return true;
+                } catch (NumberFormatException ex) {
+                    printError("Bad port: \"" + value + "\"");
+                    return false;
+                }
+
+            default:
+                printError("unknown key: \"" + key + "\"");
+                return false;
+        }
+    }
 }

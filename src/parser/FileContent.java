@@ -3,40 +3,57 @@
 
 package parser;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name="\"FileContent\"")
-public class FileContent implements java.io.Serializable
-{
-	private static final long serialVersionUID = 1991375932464233463L;
+@Table(name = "\"FileContent\"")
+public class FileContent implements java.io.Serializable {
+    private static final long serialVersionUID = 1991375932464233463L;
 
-	public FileContent() { }
+    public FileContent() {
+    }
 
-	@Column(name="hash", nullable=false)
-	@Id
-	String hash;
-	public String getHash() { return hash; }
-	public void setHash(String hash) { this.hash = hash; }
+    @Column(name = "hash", nullable = false)
+    @Id
+    String hash;
 
-	@Column(name="content", nullable=false)
-	String content;
-	public String getContent() { return content; }
-	public void setContent(String content) { this.content = content; }
+    public String getHash() {
+        return hash;
+    }
 
-	//--------------------------------
+    public void setHash(String hash) {
+        this.hash = hash;
+    }
 
-	@Override
-	public boolean equals(Object other)
-	{
-		if(this==other) { return true; }
-		if(other==null || !(other instanceof FileContent)) { return false; }
-		return hash.equals(((FileContent)other).hash);
-	}
+    @Column(name = "content", nullable = false)
+    String content;
 
-	@Override
-	public int hashCode()
-	{
-		return hash.hashCode();
-	}
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    //--------------------------------
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) {
+            return true;
+        }
+        if (other == null || !(other instanceof FileContent)) {
+            return false;
+        }
+        return hash.equals(((FileContent) other).hash);
+    }
+
+    @Override
+    public int hashCode() {
+        return hash.hashCode();
+    }
 }
