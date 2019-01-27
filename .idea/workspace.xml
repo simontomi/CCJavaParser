@@ -3,40 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="944db4b8-7f99-4d18-89af-d5e2fb3d1674" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/ArgParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/ArgParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/AstVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/AstVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/BuildAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/BuildAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/BuildLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/BuildLog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/BuildParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/BuildParameter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/BuildSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/BuildSource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/BuildTarget.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/BuildTarget.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/ConnStringParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/ConnStringParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/DatabasePlatform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/DatabasePlatform.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/File.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/File.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/FileContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/FileContent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Frame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/HtmlBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/HtmlBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/JavaAnnotation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/JavaAnnotation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/JavaAstNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/JavaAstNode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/JavaDocComment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/JavaDocComment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/JavaEnumConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/JavaEnumConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/JavaFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/JavaFunction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/JavaImport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/JavaImport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/JavaMember.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/JavaMember.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/JavaParserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/JavaParserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/JavaType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/JavaType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/JavaVariable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/JavaVariable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/LogConfigurator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/LogConfigurator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/NameExtractor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/NameExtractor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/NameMangler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/NameMangler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Option.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Option.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/ParseException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/ParseException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/PositionInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/PositionInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/ProblemHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/ProblemHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Project.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Project.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/parser/mod/JavaParserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/mod/JavaParserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/parser/mod/JavaParsingResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/parser/mod/JavaParsingResult.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -113,14 +80,32 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/parser/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="649">
-              <caret line="223" column="16" selection-start-line="223" selection-start-column="16" selection-end-line="223" selection-end-column="16" />
+            <state relative-caret-position="199">
+              <caret line="193" column="87" lean-forward="true" selection-start-line="193" selection-start-column="87" selection-end-line="193" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuildAction.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/parser/BuildAction.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JavaParserArg.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/parser/mod/JavaParserArg.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -147,11 +132,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JavaParsingResult.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="JavaParsingResult.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/parser/mod/JavaParsingResult.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            <state relative-caret-position="75">
+              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -212,23 +197,23 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/parser/mod/JavaParsingResult.java" />
         <option value="$PROJECT_DIR$/src/parser/mod/JavaParserService.java" />
         <option value="$PROJECT_DIR$/src/parser/mod/JavaParserArg.java" />
         <option value="$PROJECT_DIR$/src/parser/Utils.java" />
         <option value="$PROJECT_DIR$/src/parser/AstVisitor.java" />
         <option value="$PROJECT_DIR$/src/parser/JavaParserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/parser/BuildAction.java" />
         <option value="$PROJECT_DIR$/src/parser/Parser.java" />
         <option value="$PROJECT_DIR$/src/parser/ArgParser.java" />
+        <option value="$PROJECT_DIR$/src/parser/BuildAction.java" />
+        <option value="$PROJECT_DIR$/src/parser/mod/JavaParsingResult.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="65" />
-    <option name="y" value="527" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="188" />
+    <option name="y" value="359" />
     <option name="width" value="1704" />
-    <option name="height" value="1143" />
+    <option name="height" value="1115" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -362,7 +347,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="297" width="2495" height="1444" extended-state="6" />
+    <frame x="188" y="359" width="1704" height="1115" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
@@ -373,13 +358,13 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.24775448" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3286991" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14028056" />
-      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32934132" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20539907" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32934132" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -669,24 +654,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/parser/mod/JavaParserArg.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/parser/BuildTarget.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="26" column="6" lean-forward="true" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/parser/BuildAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="26" column="68" selection-start-line="26" selection-start-column="68" selection-end-line="26" selection-end-column="68" />
         </state>
       </provider>
     </entry>
@@ -728,20 +699,6 @@
             <element signature="e#3319#3320#0" expanded="true" />
             <element signature="e#3353#3354#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/parser/mod/JavaParserService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" selection-start-line="7" selection-end-line="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/parser/mod/JavaParsingResult.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -814,11 +771,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/parser/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="649">
-          <caret line="223" column="16" selection-start-line="223" selection-start-column="16" selection-end-line="223" selection-end-column="16" />
+        <state relative-caret-position="199">
+          <caret line="193" column="87" lean-forward="true" selection-start-line="193" selection-start-column="87" selection-end-line="193" selection-end-column="87" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/parser/BuildAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/parser/mod/JavaParserArg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/parser/mod/JavaParserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/parser/mod/JavaParsingResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
         </state>
       </provider>
     </entry>
